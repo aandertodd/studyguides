@@ -1,0 +1,137 @@
+Databases and SQL
+Explain what relational databases are used for and what SQL is
+Perform CRUD (Create, Read, Update, Delete) operations using SQL queries
+Explain what joins are used for
+Describe the difference between the four types of joins: inner, left outer, right outer, and full outer
+Know how to write queries using joins
+Know how to use foreign keys
+Explain the similarities between Python objects and database tables
+Know how to create tables with an understanding of one-to-many relationships
+Know how to use phpMyAdmin and build a database locally
+Know how to create a new user and database
+Know how to import tables using a .sql file
+Explain how and why data is split into related tables
+Know how to perform complex SQL queries with joins and subqueries
+Object-Relational Mapping
+Know how to install packages necessary for working with MySQL databases in Flask
+Know how to configure SQLAlchemy within a Flask application, using Flask-SQLAlchemy
+Know how to create a persistent class by extending SQLAlchemy.Model
+Know how to create simple properties of type integer, string, and Boolean
+Know how to create a primary key field on a persistent class
+Know how to use a Python shell to create database tables based on persistent classes
+Know how to store persistent classes using SQLAlchemy.sesssion and SQLAlchemy.commit
+Know how to Query for persistent classes using Model.query.all and Model.query.filter_by
+Know how to destroy and recreate tables for persistent classes after updating a model class
+User Objects, Authentication, and Relationships
+Know how to create a persistent User class
+Understand User flash messages to communicate with the user
+Know how to configure model objects to have one-to-many relationships
+Understand how to use sessions to store state across requests
+Understand how to use sessions to manage the state of a logged in user
+Understand how to use @app.before_request to check for a logged in user
+
+
+Cookies
+
+Describe the data format of cookies
+-cookies are key/value pairs
+
+Describe how a server-side application can set a cookie in a browser
+-Cookies are set using the Set-Cookie HTTP header, sent in an HTTP response from the web server.
+ This header instructs the web browser to store the cookie and send it back in future requests to the server.
+ Set-Cookie: theme=light
+ Set-Cookie: sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT
+
+Describe how a browser sends cookies to a server-side application
+-
+
+
+Describe the security risks posed by cookies
+-cookies are easily manipulated with javascript and can be edited and re-set with the developer tools
+
+Know how to set and access cookie values in Flask
+-
+
+Describe how session data is stored within cookies
+-
+
+
+
+
+#PREP REVIEW QUESTIONS
+
+CLASS 6
+
+What are the benefits of using templates instead of str.format for HTML?
+
+How do you use placeholders in templates? Is it the same as with str.format? If not, how is it different?
+
+How do you do HTML escaping with templates?
+
+What is the syntax you use to include a loop in your template? And to include a conditional?
+
+How can you make your code more reusable and write less boilerplate code using templates? Explain the
+relationship between base templates, content blocks and template extensions.
+
+
+CLASS 9
+
+What is the relationship between a Python class and a table used to persist that class in a database?
+In other words, what aspect of a table does a class's property relate to or represent? And what aspect of a
+table does an instance of a class relate to or represent?
+
+Instead of deleting a row from a database, how could you flag it so that your program knows not to select it
+ from the database? What are the benefits of doing this rather than deleting the data?
+
+When you declare a field/column to be a primary key using SQLAlchemy, do you need to pass in an integer to
+the database? Why or why not?
+
+What two commands do you use to delete and recreate a table using the Python shell? Do you keep the data
+that was in your table when you do these commands?
+
+What are two primary causes of your program not running when it utilizes a database?
+
+
+CLASS 10
+
+What is the special value that will be assigned to user if the query didn't find a matching user in this
+statement:
+
+user = User.query.filter_by(email=email).first()
+What is a session? Why do we use it? What data type is Flask's session object?
+
+What is the decorator @app.before_request used for? When is a function with that decorator called? Explain
+what is going on in this code snippet:
+
+@app.before_request
+def require_login():
+    allowed_routes = ['login', 'register']
+    if request.endpoint not in allowed_routes and 'email' not in session:
+        return redirect('/login')
+
+Why are flash messages useful? How do they relate to the session object?
+
+Describe what this line in the User class means:
+
+tasks = db.relationship('Task', backref='owner')
+
+
+CLASS 11
+
+Since HTTP is stateless, how is state preserved across requests?
+-'While http is stateless, it's not session less. Here, cookies allow the use of stateful sessions'
+
+What data type does request.cookies.get() return?
+-key/value
+
+Describe how cookie-based sessions work in Flask.
+
+Can you set a cookie for a different domain?
+-no
+
+If you do not set an expires parameter when will your cookie expire?
+-as soon as you close the browser
+
+Define a cookie and describe why they are useful.
+-are small pieces of data stored by browser and sent in http requests. they are useful to remember
+ things like logins, etc.
